@@ -6,7 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @EnableDubbo
 @SpringBootApplication
-//@EnableHystrix
 public class DubbospringbootconsumerApplication {
 
 	public static void main(String[] args) {

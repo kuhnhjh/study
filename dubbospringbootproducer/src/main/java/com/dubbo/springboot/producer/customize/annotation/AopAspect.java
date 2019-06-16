@@ -4,6 +4,8 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 /**
@@ -12,11 +14,12 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class AopAspect {
+    private Logger logger= LoggerFactory.getLogger(AopAspect.class);
     @Pointcut("execution(public * com.dubbo.springboot.producer.service.DemoServiceImpl.*(..)) && @annotation(com.dubbo.springboot.producer.customize.annotation.MyAopannotation)")
     public void addAdvice(){}
 
     @Before("addAdvice()")
     public void beforeMETHOD(JoinPoint pjp){
-        System.out.printf("马上调用方法"+pjp.getSignature().getName());
+        logger.info("马上调用方法"+pjp.getSignature().getName());
     }
 }
